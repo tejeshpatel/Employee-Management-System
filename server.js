@@ -135,7 +135,14 @@ async function updateEmployeeRole() {
     value: id
   }));
 
- 
+  const { roleId } = await prompt([
+    {
+      type: "list",
+      name: "roleId",
+      message: "Which role do you want to assign the selected employee?",
+      choices: roleChoices
+    }
+  ]);
 
   await db.updateEmployeeRole(employeeId, roleId);
 
